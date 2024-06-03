@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+    font-family:'Courier New', Courier, monospace;
+    background-color: #a5b4fc;
+}
+.header {
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+    background-color: #fef08a;
+}
+
+.header button {
+    background-color: #fbbf24;
+    padding: 10px;
+}
+
+.main-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #bef264;
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.card h2 {
+    font-size: 1.2em;
+}
+
+.card p {
+    font-size: 0.8em;
+}
