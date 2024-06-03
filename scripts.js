@@ -1,4 +1,4 @@
-const myLibrary = [{title: "harry potter", author: "jk rowling", pages: 366, read: true},{title: "reka mistrza", author: "stephen king", pages: 366, read: true}];
+const myLibrary = [];
 const addBookButton = document.querySelector("#addBook");
 const mainContent = document.querySelector(".main-content");
 const dialog = document.querySelector("dialog");
@@ -24,6 +24,10 @@ function removeBookFromLibrary(book) {
     generateLibrary();
 }
 
+Book.prototype.toggleRead = function() {
+    this.read=!this.read;
+};
+
 function generateLibrary() {
     mainContent.innerHTML="";
     myLibrary.forEach((book) => {
@@ -43,15 +47,19 @@ function generateLibrary() {
         pages.innerText = "Pages: "+book.pages;
         card.appendChild(pages);
 
-        const read = document.createElement("h4");
-        if(book.read==true) {
-            read.innerText = "Read? Yes!";
+        const readStatus = document.createElement("button");
+        if(book.read) {
+            readStatus.innerText = "Read!";
         } else {
-            read.innerText = "Read? No! :(";
+            readStatus.innerText = "Not Read Yet!";
         }
-        card.appendChild(read);
+        readStatus.classList.add("readStatus")
+        readStatus.addEventListener("click", () => {
+            book.toggleRead();
+            generateLibrary();
+        })
 
-        card.setAttribute("data-id",myLibrary.indexOf(book));
+        card.appendChild(readStatus);
 
         const removeMeButton = document.createElement("button");
         removeMeButton.classList.add("removeMeButton")

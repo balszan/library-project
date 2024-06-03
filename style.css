@@ -69,7 +69,8 @@ form #title, #author, #pages {
     width: 250px;
 }
 
-.removeMeButton {
+.removeMeButton, .readStatus {
+    margin: 0 10px 0 10px;
     background-color: #fbbf24;
     padding: 10px;
 }
