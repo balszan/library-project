@@ -31,14 +31,21 @@ body {
     border-radius: 20px;
     text-align: center;
     border: 1px solid black;
+    padding: 0 20px 0 20px;
 }
 
 .card h2 {
-    font-size: 1.2em;
+    font-size: 1.6em;
+    padding-bottom: 20px;
 }
 
 .card p {
     font-size: 0.8em;
+}
+
+dialog {
+    background-color: transparent;
+    border: none;
 }
 
 form {
@@ -52,12 +59,17 @@ form {
     display:grid;
 }
 
-.form button {
+form button {
     width: 120px;
     background-color: #fbbf24;
     padding: 10px;
 }
 
-.form #title, #author, #pages {
+form #title, #author, #pages {
     width: 250px;
+}
+
+.removeMeButton {
+    background-color: #fbbf24;
+    padding: 10px;
 }

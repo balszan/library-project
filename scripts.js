@@ -2,9 +2,10 @@ const myLibrary = [{title: "harry potter", author: "jk rowling", pages: 366, rea
 const addBookButton = document.querySelector("#addBook");
 const mainContent = document.querySelector(".main-content");
 const dialog = document.querySelector("dialog");
-const closeButton = document.querySelector(".cancel-button")
-const confirmButton = document.querySelector(".submit")
-const addBookForm = document.querySelector("#addBookForm")
+const closeButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".submit");
+const addBookForm = document.querySelector("#addBookForm");
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -19,7 +20,8 @@ function addBookToLibrary() {
 
 function removeBookFromLibrary(book) {
     const indexOfBook = myLibrary.indexOf(book);
-    myLibrary.split(indexOfBook,1);
+    myLibrary.splice(indexOfBook,1);
+    generateLibrary();
 }
 
 function generateLibrary() {
@@ -49,6 +51,15 @@ function generateLibrary() {
         }
         card.appendChild(read);
 
+        card.setAttribute("data-id",myLibrary.indexOf(book));
+
+        const removeMeButton = document.createElement("button");
+        removeMeButton.classList.add("removeMeButton")
+        removeMeButton.innerText = "X";
+        removeMeButton.addEventListener("click", () => {
+            removeBookFromLibrary(book)
+        });
+        card.appendChild(removeMeButton);
 
         mainContent.appendChild(card);
     })
@@ -80,3 +91,4 @@ addBookForm.addEventListener('submit',(event) => {
 })
 
 generateLibrary()
+
