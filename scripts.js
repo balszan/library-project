@@ -7,11 +7,19 @@ const confirmButton = document.querySelector(".submit");
 const addBookForm = document.querySelector("#addBookForm");
 
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+
+class Book {
+    constructor(title,author,pages,read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    toggleRead() {
+        return this.read=!this.read;
+    }
+
 }
 
 function addBookToLibrary() {
@@ -24,9 +32,6 @@ function removeBookFromLibrary(book) {
     generateLibrary();
 }
 
-Book.prototype.toggleRead = function() {
-    this.read=!this.read;
-};
 
 function generateLibrary() {
     mainContent.innerHTML="";
