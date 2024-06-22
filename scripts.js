@@ -103,5 +103,54 @@ addBookForm.addEventListener('submit',(event) => {
     generateLibrary()
 })
 
+const titleError = document.querySelector('#title + div.error-message');
+const title = document.getElementById('title')
+title.addEventListener("input", (e) => {
+    if(title.validity.valueMissing) {
+        titleError.className = "error-message active";
+        titleError.innerText = "You need to insert a title";
+    } else if(title.validity.tooShort) {
+        titleError.className = "error-message active";
+        titleError.innerText = "Title too short";
+
+    } else if(title.validity.valid) {
+        titleError.className = "error-message";
+        titleError.innerText="";
+    }
+});
+
+const authorError = document.querySelector('#author + div.error-message');
+const author = document.getElementById('author')
+author.addEventListener("input", (e) => {
+    if(author.validity.valueMissing) {
+        authorError.className = "error-message active";
+        authorError.innerText = "You need to insert an author";
+    } else if(author.validity.tooShort) {
+        authorError.className = "error-message active";
+        authorError.innerText = "Author's name too short";
+
+    } else if(author.validity.valid) {
+        authorError.className = "error-message";
+        authorError.innerText="";
+    }
+});
+
+const pagesError = document.querySelector('#pages + div.error-message');
+const pages = document.getElementById('pages')
+pages.addEventListener("input", (e) => {
+    if(pages.validity.typeMismatch) {
+        pagesError.className = "error-message active";
+        pagesError.innerText = "Not a number";
+    } else if(pages.validity.rangeUnderflow) {
+        pagesError.className = "error-message active";
+        pagesError.innerText = "Not enough pages";
+
+    } else if(pages.validity.valid) {
+        pagesError.className = "error-message";
+        pagesError.innerText="";
+    }
+});
+
+
 generateLibrary()
 
